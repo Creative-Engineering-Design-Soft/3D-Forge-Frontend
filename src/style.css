@@ -125,12 +125,67 @@ body {
   padding: 30px;
   overflow-y: auto;
   /* 내부 스크롤 */
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* 2열 */
-  grid-template-rows: auto 1fr;
+  display: block;
+
   /* 높이 자동 조절 */
   gap: 30px;
+}
+.card.full-width {
+  grid-column: 1 / 3;
+}
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2열 */
+  grid-template-rows: auto 1fr; /* 높이 자동 조절 */
+  gap: 30px;
+}
+
+/* 프린터 테이블 스타일 */
+.printer-table {
+  width: 100%;
+  border-collapse: collapse; 
+  margin-top: 20px;
+  font-size: 15px;
+  text-align: left;
+}
+
+.printer-table th, 
+.printer-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.printer-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #555;
+  text-transform: uppercase;
+}
+
+/* 상태 배지 스타일 */
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 13px;
+  color: white;
+}
+
+.status-badge.connected {
+  background-color: #28a745; /* 녹색: 연결됨 */
+}
+
+.status-badge.disconnected {
+  background-color: #dc3545; /* 빨간색: 연결 끊김 */
+}
+
+.status-badge.printing {
+  background-color: #fd7e14; /* 주황색: 출력중 */
+}
+
+.status-badge.waiting {
+  background-color: #6c757d; /* 회색: 대기중 */
 }
 
 .card {
