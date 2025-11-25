@@ -115,6 +115,76 @@ function DashboardView({ Gauge }) {
     </div>
   );
 }
+// 5. 히스토리(기록) 컴포넌트 정의
+function HistoryView() {
+  // 임시 데이터 (나중에 실제 데이터베이스나 로그에서 가져오면 됩니다)
+  const historyLogs = [
+    {
+      id: 1,
+      time: "2023-11-25 14:30:05",
+      name: "Ender 3 Pro",
+      type: "Connected", // 연결
+      ip: "192.168.1.101",
+    },
+    {
+      id: 2,
+      time: "2023-11-25 09:15:22",
+      name: "CR-10 Max",
+      type: "Disconnected", // 해제
+      ip: "192.168.1.102",
+    },
+    {
+      id: 3,
+      time: "2023-11-24 18:45:00",
+      name: "Prusa i3 MK3S+",
+      type: "Connected",
+      ip: "192.168.1.103",
+    },
+    {
+      id: 4,
+      time: "2023-11-24 10:20:11",
+      name: "Ender 3 Pro",
+      type: "Disconnected",
+      ip: "192.168.1.101",
+    },
+  ];
+
+  return (
+    <div className="card full-width">
+      <h3>시스템 연결 기록</h3>
+      <table className="printer-table">
+        <thead>
+          <tr>
+            <th>시간</th>
+            <th>프린터 이름</th>
+            <th>이벤트</th>
+            <th>IP 주소</th>
+          </tr>
+        </thead>
+        <tbody>
+          {historyLogs.map((log) => (
+            <tr key={log.id}>
+              <td>{log.time}</td>
+              <td>{log.name}</td>
+              <td>
+                {/* 상태에 따라 배지 색상 변경 (Connected: 초록, Disconnected: 빨강) */}
+                <span
+                  className={`status-badge ${
+                    log.type === "Connected" ? "connected" : "disconnected"
+                  }`}
+                >
+                  {log.type === "Connected" ? "연결됨" : "연결 해제"}
+                </span>
+              </td>
+              <td>{log.ip}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 
 export default function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -178,6 +248,7 @@ export default function App() {
             {/* 4. main 영역 조건부 렌더링 */}
             {activeMenu === 'dashboard' && <DashboardView Gauge={Gauge} />}
             {activeMenu === 'printers' && <PrinterList />}
+            {activeMenu === 'history' && <HistoryView />}
             {/* History와 Settings 뷰는 아직 정의되지 않았으므로 렌더링되지 않습니다. */}
           </main>
         </>
