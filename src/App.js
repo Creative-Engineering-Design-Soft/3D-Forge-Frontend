@@ -116,21 +116,21 @@ function DashboardView({ Gauge }) {
   );
 }
 // 5. 히스토리(기록) 컴포넌트 정의
+// 5. 히스토리(기록) 컴포넌트 정의 (열 순서 변경: 이름 <-> 시간)
 function HistoryView() {
-  // 임시 데이터 (나중에 실제 데이터베이스나 로그에서 가져오면 됩니다)
   const historyLogs = [
     {
       id: 1,
       time: "2023-11-25 14:30:05",
       name: "Ender 3 Pro",
-      type: "Connected", // 연결
+      type: "Connected",
       ip: "192.168.1.101",
     },
     {
       id: 2,
       time: "2023-11-25 09:15:22",
       name: "CR-10 Max",
-      type: "Disconnected", // 해제
+      type: "Disconnected",
       ip: "192.168.1.102",
     },
     {
@@ -155,8 +155,9 @@ function HistoryView() {
       <table className="printer-table">
         <thead>
           <tr>
-            <th>시간</th>
+            {/* ▼ 1. 헤더 순서 변경 (이름이 먼저, 시간이 나중) */}
             <th>프린터 이름</th>
+            <th>시간</th>
             <th>이벤트</th>
             <th>IP 주소</th>
           </tr>
@@ -164,10 +165,11 @@ function HistoryView() {
         <tbody>
           {historyLogs.map((log) => (
             <tr key={log.id}>
-              <td>{log.time}</td>
+              {/* ▼ 2. 데이터 표시 순서도 똑같이 변경 */}
               <td>{log.name}</td>
+              <td>{log.time}</td>
+              
               <td>
-                {/* 상태에 따라 배지 색상 변경 (Connected: 초록, Disconnected: 빨강) */}
                 <span
                   className={`status-badge ${
                     log.type === "Connected" ? "connected" : "disconnected"
