@@ -1,0 +1,489 @@
+/* -------------------
+         * 1. 글로벌 설정
+         * ------------------- */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  /* 기본 레이아웃: 사이드바(240px) + 메인(나머지) */
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 240px 1fr;
+  grid-template-areas:
+    "header header"
+    "sidebar main";
+  background-color: #f4f7fe;
+  color: #333;
+  overflow: hidden;
+  /* 전체 스크롤 방지 */
+}
+
+#root {
+    width: 100vw;
+}
+
+/* -------------------
+         * 2. 헤더 (Top Bar)
+         * ------------------- */
+/* -------------------
+ * 2. 헤더 (Top Bar)
+ * ------------------- */
+/* -------------------
+ * 2. 헤더 (Top Bar)
+ * ------------------- */
+.header {
+  grid-area: header;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* 로고는 왼쪽, 버튼은 오른쪽으로 분리 */
+  padding: 0 0px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.header-logo {
+  height: 200px;
+  /* 타이포그래피 이미지 높이 조절 */
+  width: 200px;
+  /* 비율 유지 */
+  margin-left: 0px;
+  /* 필요시 왼쪽 여백 추가 */
+}
+
+/* 기존 로그인 버튼 스타일은 그대로 둡니다 */
+.login-btn {
+  background-color: #fd7e14;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-right: 24px;
+}
+
+.login-btn:hover {
+  background-color: #d96706;
+}
+
+/* -------------------
+         * 3. 사이드바 (Left Menu)
+         * ------------------- */
+.sidebar {
+  grid-area: sidebar;
+  background-color: #2b343b;
+  /* 짙은 네이비/그레이 */
+  color: #ecf0f1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s;
+  border-left: 4px solid transparent;
+}
+
+.sidebar-nav li:hover {
+  background-color: #3a464f;
+}
+
+.sidebar-nav li.active {
+  background-color: #3a464f;
+  border-left-color: #fd7e14;
+  /* 활성 상태 주황색 라인 */
+}
+
+.sidebar-nav .icon {
+  margin-right: 16px;
+  width: 24px;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* -------------------
+         * 4. 메인 콘텐츠 영역
+         * ------------------- */
+.main-content {
+  grid-area: main;
+  padding: 30px;
+  overflow-y: auto;
+  /* 내부 스크롤 */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* 2열 */
+  grid-template-rows: auto 1fr;
+  /* 높이 자동 조절 */
+  gap: 30px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+}
+
+.card h3 {
+  margin: 0 0 20px 0;
+  font-size: 20px;
+  color: #444;
+  font-weight: 700;
+}
+
+/* --- 카드 A: Printer Feed (카메라) --- */
+.card.printer-feed {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.feed-placeholder {
+  width: 100%;
+  height: 320px;
+  background-color: #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feed-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- 카드 B: Printer Status (게이지) --- */
+.card.printer-status {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.status-gauges {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40px;
+  /* 게이지와 텍스트 사이 여백 확보 */
+  margin-top: 10px;
+}
+
+.gauge-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 게이지 크기 확대 */
+.gauge-meter {
+  width: 200px;
+  height: 100px;
+  /* 반원 높이 = 너비의 절반 */
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.gauge-bg {
+  width: 100%;
+  height: 100%;
+  background: #e9ecef;
+  border-radius: 200px 200px 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.gauge-fill {
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(
+    from 180deg at 50% 100%,
+    #fd7e14 0deg,
+    #fd7e14 75deg,
+    transparent 75deg,
+    transparent 180deg
+  );
+  border-radius: 200px 200px 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.gauge-cover {
+  width: 160px;
+  /* 내부 흰색 원 */
+  height: 80px;
+  background: white;
+  border-radius: 160px 160px 0 0;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.gauge-pointer {
+  width: 4px;
+  height: 60px;
+  background: #555;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform-origin: bottom center;
+  transform: translateX(-50%) rotate(-45deg);
+  /* 바늘 각도 */
+  z-index: 3;
+  border-radius: 2px;
+}
+
+.gauge-label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #555;
+  margin-top: 5px;
+}
+
+/* File, Status 정보 하단 배치 및 스타일링 */
+.status-info {
+  margin-top: auto;
+  /* 카드 하단으로 밀기 */
+  padding-top: 20px;
+  border-top: 2px solid #f1f1f1;
+  font-size: 18px;
+  /* 폰트 키움 */
+  line-height: 1.6;
+  color: #333;
+}
+
+.status-info p {
+  margin: 8px 0;
+}
+
+.status-info strong {
+  display: inline-block;
+  width: 80px;
+  color: #777;
+}
+
+/* --- 카드 C: Live Monitoring (진행률) --- */
+.card.live-monitoring {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  text-align: center;
+  justify-content: center;
+}
+
+.progress-container {
+  margin: 30px 0;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 36px;
+  background-color: #e9ecef;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  width: 40%;
+  height: 100%;
+  background-color: #fd7e14;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 15px;
+  box-sizing: border-box;
+  color: white;
+  font-weight: bold;
+}
+
+.percentage-text {
+  font-size: 48px;
+  font-weight: 800;
+  color: #333;
+  margin: 10px 0 20px 0;
+  display: block;
+}
+
+.monitoring-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn-action {
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  background-color: #fd7e14;
+  transition: background-color 0.2s;
+}
+
+.btn-action:hover {
+  background-color: #d96706;
+}
+
+.btn-cancel {
+  background-color: #6c757d;
+}
+
+.btn-cancel:hover {
+  background-color: #5a6268;
+}
+
+/* --- 카드 D: G-Code Visualization --- */
+.card.gcode-viz {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  background-color: #2b343b;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.card.gcode-viz h3 {
+  color: #ddd;
+}
+
+.viz-sphere {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle at 30% 30%, #e0e0e0, #888);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* 시각적 장식 요소 (가상의 축) */
+.viz-sphere::before,
+.viz-sphere::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.viz-sphere::before {
+  width: 240px;
+  height: 1px;
+  top: 50%;
+  left: -20px;
+  transform: rotate(15deg);
+}
+
+.viz-sphere::after {
+  width: 1px;
+  height: 240px;
+  left: 50%;
+  top: -20px;
+  transform: rotate(15deg);
+}
+
+/* -------------------
+         * 5. 로그인 페이지 (오버레이)
+         * ------------------- */
+.login-overlay {
+  display: none;
+  /* 기본 숨김 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(43, 52, 59, 0.95);
+  /* 배경 어둡게 */
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login-box {
+  background: white;
+  padding: 40px 50px;
+  border-radius: 12px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.login-box h2 {
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.login-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.btn-login-submit {
+  width: 100%;
+  padding: 12px;
+  background-color: #fd7e14;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+.btn-login-submit:hover {
+  background-color: #d96706;
+}
+
+.btn-back {
+  margin-top: 20px;
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.btn-back:hover {
+  color: white;
+}
+
+.header {
+  grid-area: header;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.main-content {
+  grid-area: main;
+}
