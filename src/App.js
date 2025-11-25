@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./style.css";
 
-// 3. 프린터 목록 컴포넌트 정의
+// 3. 프린터 목록 컴포넌트 정의 (변경 없음)
 function PrinterList() {
-  // 실제 데이터는 API 호출 등으로 가져와야 하지만, 여기서는 예시 데이터를 사용합니다.
+  // ... (기존 PrinterList 내용) ...
   const printers = [
     { name: "Ender 3 Pro", ip: "192.168.1.101", hwId: "XYZ-123456", connected: true, status: "Printing" },
     { name: "CR-10 Max", ip: "192.168.1.102", hwId: "ABC-789012", connected: false, status: "Waiting" },
@@ -55,10 +55,12 @@ function PrinterList() {
   );
 }
 
-// 기존 대시보드 내용을 별도의 컴포넌트로 분리 (선택 사항이지만 관리 용이)
+// 기존 대시보드 내용을 별도의 컴포넌트로 분리
 function DashboardView({ Gauge }) {
   return (
-    <>
+    // CSS 그리드 적용을 위해 dashboard-layout으로 감쌌습니다.
+    <div className="dashboard-layout">
+      
       <div className="card printer-feed">
         <div className="feed-placeholder">
           <img
@@ -109,13 +111,13 @@ function DashboardView({ Gauge }) {
         <h3>G-Code Visualization</h3>
         <div className="viz-sphere"></div>
       </div>
-    </>
+
+    </div>
   );
 }
 
 export default function App() {
   const [showLogin, setShowLogin] = useState(false);
-  // 1. 새로운 state 정의: 'dashboard' 또는 'printers'
   const [activeMenu, setActiveMenu] = useState('dashboard'); 
 
   return (
@@ -144,7 +146,7 @@ export default function App() {
           <aside className="sidebar">
             <nav className="sidebar-nav">
               <ul>
-                {/* 2. Dashboard 메뉴에 onClick 추가 */}
+                {/* Dashboard 클릭 이벤트 설정 완료 */}
                 <li 
                   className={activeMenu === 'dashboard' ? 'active' : ''}
                   onClick={() => setActiveMenu('dashboard')}
@@ -152,7 +154,7 @@ export default function App() {
                   <span className="icon">🟧</span> Dashboard
                 </li>
                 
-                {/* 2. Printers 메뉴에 onClick 추가 */}
+                {/* Printers 클릭 이벤트 설정 완료 */}
                 <li
                   className={activeMenu === 'printers' ? 'active' : ''}
                   onClick={() => setActiveMenu('printers')}
@@ -160,9 +162,11 @@ export default function App() {
                   <span className="icon">🖨️</span> Printers
                 </li>
                 
+                {/* History 클릭 이벤트 추가 (완료) */}
                 <li className={activeMenu === 'history' ? 'active' : ''} onClick={() => setActiveMenu('history')}>
                   <span className="icon">📜</span> History
                 </li>
+                {/* Settings 클릭 이벤트 추가 (완료) */}
                 <li className={activeMenu === 'settings' ? 'active' : ''} onClick={() => setActiveMenu('settings')}>
                   <span className="icon">⚙️</span> Settings
                 </li>
@@ -174,6 +178,7 @@ export default function App() {
             {/* 4. main 영역 조건부 렌더링 */}
             {activeMenu === 'dashboard' && <DashboardView Gauge={Gauge} />}
             {activeMenu === 'printers' && <PrinterList />}
+            {/* History와 Settings 뷰는 아직 정의되지 않았으므로 렌더링되지 않습니다. */}
           </main>
         </>
       )}

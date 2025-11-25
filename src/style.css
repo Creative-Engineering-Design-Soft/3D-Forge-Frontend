@@ -51,6 +51,7 @@ body {
   width: auto;
   /* 비율 유지 */
   margin-left: 0px;
+  pointer-events: none;
   /* 필요시 왼쪽 여백 추가 */
 }
 
