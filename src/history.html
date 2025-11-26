@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3차원 대장간 | History</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <img src="logo.png" alt="3차원 대장간" class="header-logo" />
+        <button class="login-btn">Log In</button>
+    </header>
+
+    <aside class="sidebar">
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="dashboard.html"
+                        style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                        <span class="icon">🟧</span> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="printers.html"
+                        style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                        <span class="icon">🖨️</span> Printers
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="history.html"
+                        style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                        <span class="icon">📜</span> History
+                    </a>
+                </li>
+                <li>
+                    <a href="settings.html"
+                        style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                        <span class="icon">⚙️</span> Settings
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="card full-width">
+            <h3>시스템 연결 기록</h3>
+            <table class="printer-table">
+                <thead>
+                    <tr>
+                        <th>프린터 이름</th>
+                        <th>시간</th>
+                        <th>이벤트</th>
+                        <th>IP 주소</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ender 3 Pro</td>
+                        <td>2023-11-25 14:30:05</td>
+                        <td><span class="status-badge connected">연결됨</span></td>
+                        <td>192.168.1.101</td>
+                    </tr>
+                    <tr>
+                        <td>CR-10 Max</td>
+                        <td>2023-11-25 09:15:22</td>
+                        <td><span class="status-badge disconnected">연결 해제</span></td>
+                        <td>192.168.1.102</td>
+                    </tr>
+                    <tr>
+                        <td>Prusa i3 MK3S+</td>
+                        <td>2023-11-24 18:45:00</td>
+                        <td><span class="status-badge connected">연결됨</span></td>
+                        <td>192.168.1.103</td>
+                    </tr>
+                    <tr>
+                        <td>Ender 3 Pro</td>
+                        <td>2023-11-24 10:20:11</td>
+                        <td><span class="status-badge disconnected">연결 해제</span></td>
+                        <td>192.168.1.101</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>

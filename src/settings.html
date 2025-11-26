@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3차원 대장간 | Settings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <img src="logo.png" alt="3차원 대장간" class="header-logo" />
+        <button class="login-btn">Log In</button>
+    </header>
+
+    <aside class="sidebar">
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="dashboard.html"
+                        style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                        <span class="icon">🟧</span> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="printers.html"
+                        style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                        <span class="icon">🖨️</span> Printers
+                    </a>
+                </li>
+                <li>
+                    <a href="history.html"
+                        style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                        <span class="icon">📜</span> History
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="settings.html"
+                        style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                        <span class="icon">⚙️</span> Settings
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <main class="main-content">
+        <div class="card full-width">
+            <h3>시스템 설정</h3>
+            <p><strong>일반 설정:</strong></p>
+            <div style="padding-left: 20px; margin-bottom: 20px;">
+                <label>테마 선택:
+                    <select style="padding: 5px; margin-left: 10px;">
+                        <option>다크 모드</option>
+                        <option selected>라이트 모드</option>
+                    </select>
+                </label>
+            </div>
+
+            <p><strong>네트워크 설정:</strong></p>
+            <div style="padding-left: 20px; margin-bottom: 20px;">
+                <label>
+                    API 키: <input type="text" value="******************"
+                        style="padding: 5px; margin-left: 10px; width: 300px; border: 1px solid #ddd; border-radius: 4px;">
+                </label>
+                <button class="btn-action" style="padding: 5px 15px; margin-left: 10px;">저장</button>
+            </div>
+
+            <p><strong>알림 설정:</strong></p>
+            <div style="padding-left: 20px;">
+                <label style="display: block; margin-bottom: 10px;">
+                    <input type="checkbox" checked> 출력 완료 시 알림 받기
+                </label>
+                <label style="display: block;">
+                    <input type="checkbox"> 연결 끊김 시 경고 알림 받기
+                </label>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
