@@ -1,5 +1,6 @@
 const API_URL = "https://3d-forge-backend-production.up.railway.app";
 
+let a;
 document
   .getElementById("loginForm")
   .addEventListener("submit", async (event) => {
@@ -19,7 +20,7 @@ document
 
       const data = await response.json();
 
-      if (response.status === 200) {
+      if (data.status === 200) {
         const token = data?.result?.accessToken;
 
         if (token) {
