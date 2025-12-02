@@ -20,7 +20,7 @@ body {
 }
 
 #root {
-    width: 100vw;
+  width: 100vw;
 }
 
 /* -------------------
@@ -144,13 +144,13 @@ body {
 /* 프린터 테이블 스타일 */
 .printer-table {
   width: 100%;
-  border-collapse: collapse; 
+  border-collapse: collapse;
   margin-top: 20px;
   font-size: 15px;
   text-align: left;
 }
 
-.printer-table th, 
+.printer-table th,
 .printer-table td {
   padding: 12px 15px;
   border-bottom: 1px solid #eee;
@@ -531,6 +531,18 @@ body {
 
 .btn-back:hover {
   color: white;
+}
+
+.header {
+  grid-area: header;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.main-content {
+  grid-area: main;
 }
 
 .header {
