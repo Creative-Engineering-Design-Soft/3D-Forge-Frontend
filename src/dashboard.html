@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3차원 대장간 | Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <img src="logo.png" alt="3차원 대장간" class="header-logo" />
+        <button class="login-btn">Log In</button>
+    </header>
+
+    <aside class="sidebar">
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="active">
+                    <a href="dashboard.html"
+                        style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                        <span class="icon">🟧</span> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="printers.html"
+                        style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                        <span class="icon">🖨️</span> Printers
+                    </a>
+                </li>
+                <li>
+                    <a href="history.html"
+                        style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                        <span class="icon">📜</span> History
+                    </a>
+                </li>
+                <li>
+                    <a href="settings.html"
+                        style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                        <span class="icon">⚙️</span> Settings
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="dashboard-layout">
+
+            <div class="card printer-feed">
+                <h3>Printer Feed</h3>
+                <div class="feed-placeholder">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="3D Printer Cam" />
+                </div>
+            </div>
+
+            <div class="card printer-status">
+                <h3>Printer Status</h3>
+                <div class="status-gauges">
+                    <div class="gauge-wrapper">
+                        <div class="gauge-meter">
+                            <div class="gauge-bg"></div>
+                            <div class="gauge-fill" style="transform: rotate(75deg);"></div>
+                            <div class="gauge-cover"></div>
+                            <div class="gauge-pointer" style="transform: translateX(-50%) rotate(-45deg);"></div>
+                        </div>
+                        <div class="gauge-label">Nozzle: 200°C</div>
+                    </div>
+                    <div class="gauge-wrapper">
+                        <div class="gauge-meter">
+                            <div class="gauge-bg"></div>
+                            <div class="gauge-fill" style="transform: rotate(20deg);"></div>
+                            <div class="gauge-cover"></div>
+                            <div class="gauge-pointer" style="transform: translateX(-50%) rotate(-70deg);"></div>
+                        </div>
+                        <div class="gauge-label">Bed: 60°C</div>
+                    </div>
+                </div>
+
+                <div class="status-info">
+                    <p>
+                        <strong>File:</strong> modern_sculpture.gcode
+                    </p>
+                    <p>
+                        <strong>Status:</strong>
+                        <span style="color: #fd7e14; font-weight: bold;">
+                            Printing...
+                        </span>
+                    </p>
+                    <p>
+                        <strong>Time:</strong> 04h 12m remaining
+                    </p>
+                </div>
+            </div>
+
+            <div class="card live-monitoring">
+                <h3>Live Monitoring</h3>
+                <div class="progress-container">
+                    <span class="percentage-text">40%</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 40%;"></div>
+                    </div>
+                </div>
+                <div class="monitoring-buttons">
+                    <button class="btn-action">Pause</button>
+                    <button class="btn-action btn-cancel">Cancel</button>
+                </div>
+            </div>
+
+            <div class="card gcode-viz">
+                <h3>G-Code Visualization</h3>
+                <div class="viz-sphere"></div>
+            </div>
+
+        </div>
+    </main>
+</body>
+
+</html>

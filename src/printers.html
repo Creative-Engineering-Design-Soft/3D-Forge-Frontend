@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3차원 대장간 | Printers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <img src="logo.png" alt="3차원 대장간" class="header-logo" />
+        <button class="login-btn">Log In</button>
+    </header>
+
+    <aside class="sidebar">
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="dashboard.html"
+                        style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                        <span class="icon">🟧</span> Dashboard
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="printers.html"
+                        style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                        <span class="icon">🖨️</span> Printers
+                    </a>
+                </li>
+                <li>
+                    <a href="history.html"
+                        style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                        <span class="icon">📜</span> History
+                    </a>
+                </li>
+                <li>
+                    <a href="settings.html"
+                        style="color: inherit; text-decoration: none; display: flex; align-items: center; width: 100%;">
+                        <span class="icon">⚙️</span> Settings
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="card full-width">
+            <h3>프린터 목록</h3>
+            <table class="printer-table">
+                <thead>
+                    <tr>
+                        <th>프린터 이름</th>
+                        <th>IP 주소</th>
+                        <th>하드웨어 ID</th>
+                        <th>연결 상태</th>
+                        <th>프린트 상태</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ender 3 Pro</td>
+                        <td>192.168.1.101</td>
+                        <td>XYZ-123456</td>
+                        <td><span class="status-badge connected">연결됨</span></td>
+                        <td><span class="status-badge printing">출력중</span></td>
+                    </tr>
+                    <tr>
+                        <td>CR-10 Max</td>
+                        <td>192.168.1.102</td>
+                        <td>ABC-789012</td>
+                        <td><span class="status-badge disconnected">연결 끊김</span></td>
+                        <td><span class="status-badge waiting">대기중</span></td>
+                    </tr>
+                    <tr>
+                        <td>Prusa i3 MK3S+</td>
+                        <td>192.168.1.103</td>
+                        <td>DEF-345678</td>
+                        <td><span class="status-badge connected">연결됨</span></td>
+                        <td><span class="status-badge waiting">대기중</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>
