@@ -64,5 +64,5 @@ function updatePrinterTable(printers) {
 }
 
 // === 2초마다 실시간 갱신 ===
-//setInterval(fetchPrinters, 2000);
+setInterval(fetchPrinters, 2000);
 fetchPrinters();

@@ -1,6 +1,5 @@
 const API_URL = "https://3d-forge-backend-production.up.railway.app";
 
-let a;
 document
   .getElementById("loginForm")
   .addEventListener("submit", async (event) => {
@@ -38,3 +37,22 @@ document
       alert("서버와의 연결에 실패했습니다.");
     }
   });
+
+// === Google OAuth ===
+document.getElementById("google-login-btn").addEventListener("click", () => {
+    const googleOAuthURL = "https://3d-forge-backend-production.up.railway.app/auth/google";
+    window.open(googleOAuthURL, "_self");
+});
+
+// === Redirect 후 토큰 저장 ===
+function saveTokenFromRedirect() {
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token");
+
+    if (token) {
+        localStorage.setItem("authToken", token);
+        window.location.href = "/dashboard.html";
+    }
+}
+
+saveTokenFromRedirect();

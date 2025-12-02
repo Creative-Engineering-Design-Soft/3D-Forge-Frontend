@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3차원 대장간 | Settings</title>
-    <link rel="stylesheet" href="/style/">
+    <link rel="stylesheet" href="/style/style.css">
 </head>
 
 <body>
     <header class="header">
-        <img src="logo.png" alt="3차원 대장간" class="header-logo" />
-        <button class="login-btn">Log In</button>
+        <img src="/public/logo.png" alt="3차원 대장간" class="header-logo" />
+        <a href="/login.html"><button class="login-btn">Log In</button></a>
     </header>
 
     <aside class="sidebar">
@@ -44,40 +44,58 @@
             </ul>
         </nav>
     </aside>
+
     <main class="main-content">
         <div class="card full-width">
-            <h3>시스템 설정</h3>
-            <p><strong>일반 설정:</strong></p>
-            <div style="padding-left: 20px; margin-bottom: 20px;">
-                <label>테마 선택:
-                    <select style="padding: 5px; margin-left: 10px;">
-                        <option>다크 모드</option>
-                        <option selected>라이트 모드</option>
-                    </select>
-                </label>
-            </div>
+            <h3>사용자 설정</h3>
 
-            <p><strong>네트워크 설정:</strong></p>
             <div style="padding-left: 20px; margin-bottom: 20px;">
-                <label>
-                    API 키: <input type="text" value="******************"
-                        style="padding: 5px; margin-left: 10px; width: 300px; border: 1px solid #ddd; border-radius: 4px;">
-                </label>
-                <button class="btn-action" style="padding: 5px 15px; margin-left: 10px;">저장</button>
-            </div>
-
-            <p><strong>알림 설정:</strong></p>
-            <div style="padding-left: 20px;">
                 <label style="display: block; margin-bottom: 10px;">
-                    <input type="checkbox" checked> 출력 완료 시 알림 받기
+                    <strong>사용자 이름:</strong><br>
+                    <input type="text" id="user-name" value="Terry" readonly
+                        style="padding: 8px; width: 300px; border: 1px solid #ddd; border-radius: 6px; margin-top: 5px;">
                 </label>
-                <label style="display: block;">
-                    <input type="checkbox"> 연결 끊김 시 경고 알림 받기
+
+                <label style="display: block; margin-bottom: 10px;">
+                    <strong>사용자 이메일:</strong><br>
+                    <input type="text" id="user-email" value="test@gmail.com" readonly
+                        style="padding: 8px; width: 300px; border: 1px solid #ddd; border-radius: 6px; margin-top: 5px;">
                 </label>
+
+                <label style="display: block; margin-bottom: 20px;">
+                    <strong>선택된 하드웨어 이름:</strong><br>
+                    <input type="text" id="hardware-name" value="pi-lab-101"
+                        style="padding: 8px; width: 300px; border: 1px solid #ddd; border-radius: 6px; margin-top: 5px;">
+                </label>
+
+                <button class="btn-action" id="save-settings" style="padding: 8px 20px;">저장</button>
+            </div>
+
+            <hr style="margin: 25px 0; border: 0; height: 1px; background: #eee;">
+
+            <div style="padding-left: 20px;">
+                <button class="btn-action btn-cancel" onclick="localStorage.setItem('token', null)" id="logout-btn" style="padding: 8px 20px; background: #dc3545;">
+                    로그아웃
+                </button>
             </div>
         </div>
     </main>
+
     <script src="/src/confirm-login.js"></script>
+
+    <script>
+        // 저장 버튼
+        document.getElementById("save-settings").addEventListener("click", () => {
+            const hwName = document.getElementById("hardware-name").value;
+            alert("하드웨어 이름이 저장되었습니다: " + hwName);
+        });
+
+        // 로그아웃
+        document.getElementById("logout-btn").addEventListener("click", () => {
+            localStorage.removeItem("authToken");
+            window.location.href = "/login.html";
+        });
+    </script>
 
 </body>
 
