@@ -2,8 +2,7 @@
 const API_BASE = "https://3d-forge-backend-production.up.railway.app"; // 실제 API 주소로 변경
 
 async function fetchPrinters() {
-    //const token = localStorage.getItem("token"); // JWT 토큰 가져오기
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJrb3JlYW4xNzkwQGdtYWlsLmNvbSIsIm5hbWUiOiJUZXJyeSIsImlhdCI6MTc2NDY0ODM0MiwiZXhwIjoxNzY0NjkxNTQyfQ.n19NGUYDWuhw1UrF1L8BtS7SkQLUKjsA8_IA2wuMNeI'; // JWT 토큰 가져오기
+    const token = localStorage.getItem("token"); // JWT 토큰 가져오기
 
     if (!token) {
         console.error("토큰이 없습니다. 로그인 필요!");
@@ -64,5 +63,5 @@ function updatePrinterTable(printers) {
 }
 
 // === 2초마다 실시간 갱신 ===
-setInterval(fetchPrinters, 2000);
+//setInterval(fetchPrinters, 2000);
 fetchPrinters();
