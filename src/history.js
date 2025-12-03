@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const logsData = await logsRes.json();
         const logs = logsData || [];
-        console.log(logs)
+        logs.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
         const tbody = document.querySelector(".printer-table tbody");
         tbody.innerHTML = ""; // 기존 더미 제거
