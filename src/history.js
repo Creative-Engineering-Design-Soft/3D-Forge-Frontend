@@ -55,13 +55,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 function convertEventToBadge(event) {
     switch (event) {
         case "connect":
-            return `<span class="status-badge connected">연결됨</span>`;
+            return `<span class="status-badge connected">연결</span>`;
         case "disconnect":
             return `<span class="status-badge disconnected">연결 해제</span>`;
         case "operate":
-            return `<span class="status-badge operating">작동</span>`;
+            return `<span class="status-badge operating">상태 조정</span>`;
         case "upload":
-            return `<span class="status-badge upload">업로드됨</span>`;
+            return `<span class="status-badge upload">업로드</span>`;
         default:
             return `<span class="status-badge unknown">알 수 없음</span>`;
     }
