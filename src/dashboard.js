@@ -165,5 +165,5 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // === 2초마다 업데이트 ===
-setInterval(fetchStatus, 2000);
+setInterval(fetchStatus, 500);
 fetchStatus();
