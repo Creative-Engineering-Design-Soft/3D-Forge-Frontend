@@ -177,5 +177,5 @@ async function fetchImage() {
 
 // === 2초마다 업데이트 ===
 setInterval(fetchStatus, 500);
-setInterval(fetchImage, 500);
+setInterval(fetchImage, 100);
 fetchStatus();
