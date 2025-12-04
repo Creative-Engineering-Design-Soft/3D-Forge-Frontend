@@ -1,0 +1,17 @@
+<img id="preview" />
+<script>
+    const API_URL = "https://3d-forge-backend-production.up.railway.app";
+    async function test() {
+        const res = await fetch(`${API_URL}/printers/testt`);
+        const data = await res.json();
+        console.log(data);
+        // 만약 data.image가 Base64라면
+        const base64 = data.image;
+
+        // 이미지 렌더링
+        document.getElementById("preview").src = "data:image/png;base64," + base64; // jpeg이면 image/jpeg
+    }
+
+  test();
+
+</script>

@@ -64,13 +64,13 @@ async function fetchStatus() {
     bedLabel.innerHTML = `Bed: ${bedTemp}°C`;
 
     // ===== 게이지 시각화 반영 =====
-    const nozzleDeg = tempToDeg(nozzleTemp, -10, 250);
+    const nozzleDeg = tempToDeg(nozzleTemp, 0, 250);
     nozzleFill.style.transform = `rotate(${nozzleDeg}deg)`;
     nozzlePointer.style.transform = `translateX(-50%) rotate(${
       nozzleDeg - 90
     }deg)`;
 
-    const bedDeg = tempToDeg(bedTemp, -10, 70);
+    const bedDeg = tempToDeg(bedTemp, 0, 70);
     bedFill.style.transform = `rotate(${bedDeg}deg)`;
     bedPointer.style.transform = `translateX(-50%) rotate(${bedDeg - 90}deg)`;
 
@@ -90,12 +90,11 @@ async function fetchStatus() {
     timeText.innerHTML = `<strong>Position:</strong> X:${x} Y:${y} Z:${z}`;
 
     percentageText.innerHTML = `${percent}%`;
-    percentageFill.style.width = `${percent}%`;
+    percentageFill.style.width = `${Math.floor(percent * 100) / 100}%`;
   } catch (e) {
     console.error("Failed to fetch printer status:", e);
   }
 }
-
 
 document.addEventListener("DOMContentLoaded", () => {
   const pauseBtn = document.querySelector(".btn-action");
@@ -164,6 +163,19 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+const liveImage = document.getElementById("live-image")
+async function fetchImage() {
+  const res = await fetch(`${API_URL}/printers/image`);
+  const data = await res.json();
+
+  // 만약 data.image가 Base64라면
+  const base64 = data.image;
+
+  // 이미지 렌더링
+  liveImage.src = "data:image/png;base64," + base64; // jpeg이면 image/jpeg
+}
+
 // === 2초마다 업데이트 ===
 setInterval(fetchStatus, 500);
+setInterval(fetchImage, 500);
 fetchStatus();
