@@ -6,7 +6,7 @@ import { OrbitControls } from "/js/OrbitControls.js";
 import { STLLoader } from "/js/STLLoader.js";
 
 const HARDWARE_ID = "pi-lab-101"; // 실제 hardwareId로 변경해줘
-const API_BASE = "http://localhost:3000"; 
+const API_BASE2 = "http://localhost:3000"; 
 //const API_BASE = "https://3d-forge-backend-production.up.railway.app"; 
 
 let scene, camera, renderer, controls;
@@ -48,7 +48,7 @@ scene.add(new THREE.GridHelper(200, 40));
 // Load STL
 
 const loader = new STLLoader();
-loader.load(`${API_BASE}/public/upload/model/Tux-print-10cm-ht.stl`, (geometry) => {
+loader.load(`${API_BASE2}/public/upload/model/mesh.stl`, (geometry) => {
   geometry.computeVertexNormals();
   geometry.computeBoundingBox();
 
@@ -64,7 +64,7 @@ loader.load(`${API_BASE}/public/upload/model/Tux-print-10cm-ht.stl`, (geometry) 
   });
 
   stlMesh = new THREE.Mesh(geometry, material);
-  stlMesh.rotation.x = -Math.PI / 2;  // -90도 세우기
+  //stlMesh.rotation.x = -Math.PI / 2;  // -90도 세우기
   scene.add(stlMesh);
 });
 
@@ -93,7 +93,7 @@ animate();
 
 async function fetchProgress() {
   try {
-    const res = await fetch(`${API_BASE}/printers/${HARDWARE_ID}/status`);
+    const res = await fetch(`${API_BASE2}/printers/${HARDWARE_ID}/status`);
     const data = await res.json();
 
     // data.percent 예: 0~100
@@ -104,4 +104,4 @@ async function fetchProgress() {
 }
 
 // 1초마다 진행률 갱신
-setInterval(fetchProgress, 1000);
+setInterval(fetchProgress, 500);
