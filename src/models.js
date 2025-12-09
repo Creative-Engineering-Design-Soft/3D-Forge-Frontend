@@ -42,6 +42,7 @@ async function fetchModels() {
       const tr = document.createElement("tr");
 
       tr.innerHTML = `
+                    <td>${model.id}</td>
                     <td><strong>${model.name}</strong></td>
                     <td>${formatDate(model.createdAt)}</td>
                     <td>

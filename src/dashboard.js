@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!token) return alert("로그인이 필요합니다");
 
     // 전송할 명령
-    const operator = isPaused ? "start" : "pause";
+    const operator = "start";
 
     try {
       const res = await fetch(`${API_URL}/printers/${HARDWARE_ID}`, {
@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // UI 토글
       isPaused = !isPaused;
-      pauseBtn.textContent = isPaused ? "Start" : "Pause";
+      pauseBtn.textContent = "Start";
     } catch (err) {
       console.error("Pause/Start 에러:", err);
     }
