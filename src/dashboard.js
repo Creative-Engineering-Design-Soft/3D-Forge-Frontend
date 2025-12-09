@@ -154,7 +154,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // UI 변화 (완료 상태로 변경)
-      cancelBtn.textContent = "Finished";
+      alert("정지 명령 전달");
+      cancelBtn.textContent = "Stop";
       cancelBtn.disabled = true;
       pauseBtn.disabled = true;
     } catch (err) {

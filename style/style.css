@@ -417,9 +417,7 @@ body {
   grid-row: 2 / 3;
   background-color: #2b343b;
   color: white;
-  align-items: center;
-  justify-content: center;
-  min-height: 300px;
+  display: flex;
 }
 
 .card.gcode-viz h3 {
